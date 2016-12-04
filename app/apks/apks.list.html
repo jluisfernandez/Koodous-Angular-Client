@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		<div class="form-group mb-xl">
+		<div class="form-group mb">
 			<form ng-submit="searchApks()">
 				<div class="input-group mb-sm" ng-class="{'has-error': searchError}">
 					<input type="text" ng-model="$root.search" placeholder="Search by hash, appname, developer, package_name, tag, detected, analyzed, rating, certificate, size or date" class="form-control">
@@ -21,7 +21,61 @@
 		</button>
 
 		<div class="clearfix"></div>
-		<div class="panel panel-default">
+
+		<div class="panel mb" ng-repeat="apk in apks">
+			<div class="table-responsive">
+			  <table class="table">
+				 <tbody>
+					<tr>
+					   <td class="b0 wd-xxs text-center">
+						  <p>
+							 <a href="#">
+								<em class="fa fa-angle-up fa-lg"></em>
+							 </a>
+						  </p>
+						  <p>
+						  	<span class="label" ng-class="{'label-success': apk.rating > 0, 'label-danger': apk.rating < 0, 'label-info': apk.rating == 0}">{{ apk.rating }}</span>
+						  </p>
+						  <p class="mb0">
+							 <a href="#">
+								<em class="fa fa-angle-down fa-lg"></em>
+							 </a>
+						  </p>
+					   </td>
+					   <td class="b0 wd-xs">
+						  <a href="#">
+						  	  <img src="assets/img/dummy.png" alt="" class="img-responsive thumb64" ng-hide="apk.image">
+							  <img ng-src="{{ apk.image }}" alt="" class="img-responsive thumb64" ng-show="apk.image">
+						  </a>
+					   </td>
+					   <td class="b0">
+						  <p class="h4 mt0">
+							 <a href="/apks/{{ apk.sha256 }}" class="align-middle text-bold link-unstyled">{{ apk.app || 'Unknown app name'}}
+							 </a>
+							 <a href="/apks?search=package_name:'{{ apk.package_name }}'">({{ apk.package_name }})</a>
+							 <span class="label label-danger ml" ng-show="apk.corrupted">Corrupted</span>
+							 <a href="/apks?search=tag:{{tag}}" class="label label-info mr-sm" ng-repeat="tag in apk.tags">{{ tag }}</a>
+						  </p>
+						  <small class="text-muted">{{ apk.sha256 }}
+							 <br>{{ apk.created_on * 1000 | date:"medium" }} - <a href="/apks?search=developer:'{{ apk.company }}'" class="text-bold">{{ apk.company }}</a>
+						  </small>
+					   </td>
+					</tr>
+				 </tbody>
+			  </table>
+		   </div>
+		</div>
+
+		<div class="row pl" ng-show="loading">
+			<i>
+				<i class="fa fa-spinner fa-spin fa-fw"></i> Loading...
+			</i>
+		</div>
+		<div class="row pl" ng-show="!loading && !apks.length">
+			<i>There is no apks for your search.</i>
+		</div>
+
+		<div class="panel panel-default hide">
 			<!-- START table-responsive-->
 			<div class="table-responsive">
 				<table class="table table-striped table-bordered table-hover">
