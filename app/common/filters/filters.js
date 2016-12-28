@@ -63,11 +63,14 @@ angular.module('filters').filter('mentions', function(){
 
 angular.module('filters').filter('hashtags', function(){
     return function(text){
+        text += " #bladeblas";
         var matches = [];
-        var aux = text.split(" ");
-        for(var i = 0; i < aux.length; i++){
-            if (aux[i].startsWith('#')){
-                matches.push(aux[i]);
+        var pattern = /#[aA-zZ]+/g;
+        var count = 0;
+        var m;
+        while(m = pattern.exec(text) || count > 10){
+            if(m[0].startsWith("#")){
+                matches.push(m[0]);
             }
         }
 
