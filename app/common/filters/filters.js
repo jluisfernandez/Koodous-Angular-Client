@@ -63,7 +63,6 @@ angular.module('filters').filter('mentions', function(){
 
 angular.module('filters').filter('hashtags', function(){
     return function(text){
-        text += " #bladeblas";
         var matches = [];
         var pattern = /#[aA-zZ]+/g;
         var count = 0;
