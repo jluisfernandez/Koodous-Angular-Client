@@ -60,8 +60,6 @@
 						  <p class="h4 mt0">
 							 <a href="/apks/{{ apk.sha256 }}" class="align-middle text-bold link-unstyled">
 							 	{{ apk.app || 'Unknown app name'}}
-							 </a>
-							 <a class="align-middle" href="/apks?search=package_name:'{{ apk.package_name }}'">
 							 	({{ apk.package_name }})
 							 </a>
 							 <span class="label label-danger ml" ng-show="apk.corrupted">Corrupted</span>
