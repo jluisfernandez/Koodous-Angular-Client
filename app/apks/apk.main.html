@@ -115,6 +115,50 @@
 	</div>
 	<div class="col-md-4 meta-info">
 		<div class="title mb">
+			<i class="fa fa-fw" ng-class="{'fa-angle-right':!apk.show_engines, 'fa-angle-down':apk.show_engines}"></i>
+			<a href="" ng-click="apk.show_engines = !apk.show_engines;">Engines
+			</a>
+		</div>
+		<div class="content mb" ng-show="apk.show_engines">
+			<table class="table">
+				<tbody>
+					<tr>
+						<td class="text-bold">
+							AppInterrogator
+						</td>
+						<td align="center">
+							Security: 
+							<span ng-show="apk.mi3_report.s_score">
+								<span class="text-bold">{{ apk.mi3_report.s_score }}</span>/100
+							</span>
+							<span ng-hide="apk.mi3_report.s_score">
+								not ready
+							</span>
+							
+						</td>
+						<td align="center">Privacy: 
+							<span ng-show="apk.mi3_report.p_score">
+								<span class="text-bold">{{ apk.mi3_report.p_score || "-" }}</span>/100
+							</span>
+							<span ng-hide="apk.mi3_report.p_score">
+								not ready
+							</span>
+							
+						</td>
+						<td align="center">
+							<div>Powered by</div>
+							<div>
+								<a href="">
+									<img src="assets/img/mi3_security_logo.png" alt="" class="img-responsive">
+								</a>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="title mb">
 			<i class="fa fa-fw" ng-class="{'fa-angle-right':!apk.show_avs, 'fa-angle-down':apk.show_avs}"></i>
 			<a href="" ng-click="apk.show_avs = !apk.show_avs;">AV scans
 				<span>({{ apk.av_scans[0].total_detections }}/{{ apk.av_scans[0].results.length }})</span>

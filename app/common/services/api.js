@@ -545,6 +545,13 @@ angular.module('services.api', [])
         });
         return request;
     }
+    KoodousAPI.getAPKMi3Report = function(sha256){
+        var request = $http({
+            method: 'GET',
+            url: KoodousAPI.base_api_url + '/apks/' + sha256 + '/mi3_report',
+        });
+        return request;
+    }
     KoodousAPI.updateAPK = function(sha256, data){
         var url = KoodousAPI.base_api_url + "/apks/" + sha256;
         var request = $http({

@@ -86,6 +86,24 @@ angular.module('apks').controller('APKsCtrl', ["$scope", "$rootScope", "api", "$
 
 		$state.go($state.current.name, {search:$rootScope.search});
 	};
+	$scope.voteUp = function(apk){
+		api.voteAPK(apk.sha256, 'positive').success(function(data){
+			apk.rating += 1;
+		}).error(function(data){
+			if (status_code == 401){
+				$location.path("/login");
+			}
+		});
+	};
+	$scope.voteDown = function(apk){
+		api.voteAPK(apk.sha256, 'negative').success(function(data){
+			apk.rating -= 1;
+		}).error(function(data, status_code){
+			if (status_code == 401){
+				$location.path("/login");
+			}
+		});
+	};
 }]);
 
 angular.module('app').filter('prettify', function () {
@@ -138,22 +156,17 @@ angular.module('apks').controller('APKDetailCtrl', ["$scope", "$rootScope", "api
 			$scope.apk.show_detections = false;
 			$scope.apk.show_votes = false;
 			$scope.apk.show_avs = false;
+			$scope.apk.show_engines = false;
 
 			$scope.getDetections();
 			$scope.getVotes();
 			$scope.getAVScans();
+			$scope.getMi3Report();
 		}).error(function(){
 			$location.url("/apks");
 		});
 	};
 	$scope.getApk();
-
-	// $scope.getComments = function(){
-	// 	api.getAPKComments($stateParams.sha256).success(function(data){
-	// 		$scope.totalComments = data.count;
-	// 	});
-	// };
-	// $scope.getComments();
 
 	$scope.download = function(){
 		var sha256 = $stateParams.sha256;
@@ -211,6 +224,12 @@ angular.module('apks').controller('APKDetailCtrl', ["$scope", "$rootScope", "api
 			else{
 				$scope.apk.show_avs = true;
 			}
+		});
+	}
+	$scope.getMi3Report = function(){
+		api.getAPKMi3Report($stateParams.sha256).success(function(response){
+			$scope.apk.mi3_report = response;
+			$scope.apk.show_engines = true;
 		});
 	}
 }]);
