@@ -156,10 +156,12 @@ angular.module('apks').controller('APKDetailCtrl', ["$scope", "$rootScope", "api
 			$scope.apk.show_detections = false;
 			$scope.apk.show_votes = false;
 			$scope.apk.show_avs = false;
+			$scope.apk.show_engines = false;
 
 			$scope.getDetections();
 			$scope.getVotes();
 			$scope.getAVScans();
+			$scope.getMi3Report();
 		}).error(function(){
 			$location.url("/apks");
 		});
@@ -222,6 +224,12 @@ angular.module('apks').controller('APKDetailCtrl', ["$scope", "$rootScope", "api
 			else{
 				$scope.apk.show_avs = true;
 			}
+		});
+	}
+	$scope.getMi3Report = function(){
+		api.getAPKMi3Report($stateParams.sha256).success(function(response){
+			$scope.apk.mi3_report = response;
+			$scope.apk.show_engines = true;
 		});
 	}
 }]);
