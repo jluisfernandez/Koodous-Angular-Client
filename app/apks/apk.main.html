@@ -129,7 +129,7 @@
 						<td align="center">
 							Security: 
 							<span ng-show="apk.mi3_report.s_score">
-								<span class="text-bold">{{ apk.mi3_report.s_score }}</span>/100
+								<span class="text-bold" ng-class="{'text-success': apk.mi3_report.s_score < 56, 'text-warning': apk.mi3_report.s_score >= 56 && apk.mi3_report.s_score < 71, 'text-danger': apk.mi3_report.s_score > 70}">{{ apk.mi3_report.s_score }}</span>/100
 							</span>
 							<span ng-hide="apk.mi3_report.s_score">
 								not ready
@@ -138,7 +138,7 @@
 						</td>
 						<td align="center">Privacy: 
 							<span ng-show="apk.mi3_report.p_score">
-								<span class="text-bold">{{ apk.mi3_report.p_score || "-" }}</span>/100
+								<span class="text-bold" ng-class="{'text-success': apk.mi3_report.p_score < 56, 'text-warning': apk.mi3_report.p_score >= 56 && apk.mi3_report.p_score < 71, 'text-danger': apk.mi3_report.p_score > 70}">{{ apk.mi3_report.p_score || "-" }}</span>/100
 							</span>
 							<span ng-hide="apk.mi3_report.p_score">
 								not ready
@@ -148,7 +148,7 @@
 						<td align="center">
 							<div>Powered by</div>
 							<div>
-								<a href="https://www.mi3security.com/" target="_blank">
+								<a href="http://threatcenter.mi3security.com/" target="_blank">
 									<img src="assets/img/mi3_security_logo.png" alt="" class="img-responsive">
 								</a>
 							</div>
