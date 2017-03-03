@@ -190,6 +190,14 @@
 						<li ng-repeat="row in apk.analysis.androguard.filters track by $index" ng-bind="row"></li>
 					</ul>
 				</uib-accordion-group>
+
+				<!-- Providers -->
+				<uib-accordion-group>
+					<uib-accordion-heading>Providers ({{ apk.analysis.androguard.providers.length || 0 }})</uib-accordion-heading>
+					<ul class="list-unstyled">
+						<li ng-repeat="row in apk.analysis.androguard.providers track by $index" ng-bind="row"></li>
+					</ul>
+				</uib-accordion-group
 				
 				<!-- Permissions -->
 				<uib-accordion-group>
