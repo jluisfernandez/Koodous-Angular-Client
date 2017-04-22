@@ -64,7 +64,7 @@
                   <div class="col thumb64" ng-show="row.apk">
                      <a href="/apks/{{ row.apk.sha256 }}">
                         <img ng-src="/assets/img/dummy.png" alt="" class="media-object img-responsive img-rounded thumb64" ng-hide="row.apk.image">
-                        <img ng-src="{{ row.apk.image }}" alt="" class="media-object img-responsive img-rounded thumb64" ng-show="row.apk.image">
+                        <img ng-src="{{ row.apk.image }}" onerror="this.src='assets/img/dummy.png'" alt="" class="media-object img-responsive img-rounded thumb64" ng-show="row.apk.image">
                      </a>
                   </div>
                </div>
