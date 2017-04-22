@@ -43,7 +43,7 @@
 			<div class="col thumb32">
 				<a href="/apks/{{ notification.apk.sha256 }}" ng-show="notification.apk && !notification.analyst_ref">
 					<img src="assets/img/dummy.png" alt="" class="media-object img-responsive img-rounded thumb32" ng-hide="notification.apk.image">
-					<img ng-src="{{ notification.apk.image }}" alt="" class="media-object img-responsive img-rounded thumb32" ng-show="notification.apk.image">
+					<img ng-src="{{ notification.apk.image }}" onerror="this.src='assets/img/dummy.png'" alt="" class="media-object img-responsive img-rounded thumb32" ng-show="notification.apk.image">
 				</a>
 				<a href="/analysts/{{ notification.analyst_ref.username }}" ng-show="notification.analyst_ref">
 					<img ng-src="{{ notification.analyst_ref.avatar_url }}" alt="Image" class="media-object img-circle thumb32" ng-show="notification.analyst_ref.avatar_url">
