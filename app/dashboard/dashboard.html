@@ -95,7 +95,7 @@
 				<div class="col-xs-3 mb-xl" ng-repeat="apk in apks | slice:0:8">
 					<a href="/apks/{{ apk.sha256 }}">
 						<img src="/assets/img/dummy.png" alt="" class="media-object img-responsive img-rounded" ng-hide="apk.image">
-						<img ng-src="{{ apk.image }}" alt="" class="media-object img-responsive img-rounded" ng-show="apk.image">
+						<img ng-src="{{ apk.image }}" onerror="this.src='assets/img/dummy.png'" alt="" class="media-object img-responsive img-rounded" ng-show="apk.image">
 					</a>
 				</div>
 			</div>

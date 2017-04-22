@@ -39,7 +39,7 @@
 			<div class="pull-left mt-lg mr-lg">
 				<div class="mb-sm">
 					<img src="assets/img/dummy.png" alt="" class="media-object img-responsive img-rounded thumb64" ng-hide="apk.image">
-					<img ng-src="{{ apk.image }}" alt="" class="media-object img-responsive img-rounded thumb64" ng-show="apk.image">
+					<img ng-src="{{ apk.image }}" onerror="this.src='assets/img/dummy.png'" alt="" class="media-object img-responsive img-rounded thumb64" ng-show="apk.image">
 				</div>
 				<button ng-click="download()" ng-hide="$root.user.anon" class="btn btn-info btn-block btn-xs">Download</button>
 				<button ng-click="analyze()"  ng-hide="$root.user.anon" class="btn btn-success btn-block btn-xs" ng-disabled="analyzing">
