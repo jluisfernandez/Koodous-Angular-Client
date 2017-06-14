@@ -30,14 +30,14 @@
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="panel widget" style="cursor:pointer" ng-click="go('/rulesets')">
+				<div class="panel widget" style="cursor:pointer" ng-click='go("/apks", "detected:false AND rating:\"-1\"")'>
 					<div class="row row-table">
 						<div class="col-xs-4 text-center bg-info-dark pv-lg">
-							<em class="fa fa-code fa-3x"></em>
+							<em class="fa fa-exclamation-circle fa-3x"></em>
 						</div>
 						<div class="col-xs-8 pv-lg">
-							<div class="h2 mt0">{{ $root.totalSocialRulesets | number }}&nbsp;</div>
-							<div class="text-uppercase">Social rulesets</div>
+							<div class="h2 mt0">{{ $root.potentialMalware | number }}&nbsp;</div>
+							<div class="text-uppercase">Potential malware</div>
 						</div>
 					</div>
 				</div>

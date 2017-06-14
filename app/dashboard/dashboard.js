@@ -38,6 +38,11 @@ angular.module('dashboard').controller('DashboardCtrl', ["$scope", "$rootScope",
 			$rootScope.totalSocialRulesets = response.count;
 		});
 
+		//Potential malware
+		api.getAPKs(false, {search:"detected:0 AND rating:\"-1\""}).success(function(response){
+			$rootScope.potentialMalware = response.count;
+		});
+
 		function getGlobalActivity(){
 			$scope.activity_loading = true;
 			api.getGlobalActivity().success(function(response){
