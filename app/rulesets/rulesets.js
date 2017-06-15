@@ -36,6 +36,29 @@ angular.module('rulesets').controller('RulesetsCtrl', ["$scope", "$stateParams",
 		api.getPublicRulesets($scope.currentPage, $scope.itemsPerPage, $scope.filters).success(function(data){
 			$scope.rulesets = data.results;
 			$scope.totalItems = data.count;
+			var description_exp = /(?:description\s*=\s*)"((?:\\.|[^"\\])*)"/
+			var imports = /(?:import\s*"\w+")/g
+
+			// Clean ruleset excerpt
+			for (var i = data.results.length - 1; i >= 0; i--) {
+
+				// meta description is present
+				if (data.results[i].rules.match(description_exp) != null) {
+					$scope.rulesets[i].rules = data.results[i].rules.match(description_exp)[1];
+				}
+
+				// if not, ride away the imports
+				else {
+					if (data.results[i].rules.match(imports) != null) {
+						var matches = data.results[i].rules.match(imports);
+						for (var j = matches.length - 1; j >= 0; j--) {
+							var a = data.results[i].rules;
+							$scope.rulesets[i].rules = a.replace(matches[j], "");
+						}
+					}
+				}
+			}
+
 		}).finally(function(){
 			$scope.loading = false;
 		});
