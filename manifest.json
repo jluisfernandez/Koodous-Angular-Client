@@ -1,0 +1,13 @@
+{
+	"name": "Koodous Community",
+	"short_name": "Koodous",
+	"start_url": "./",
+	"display": "standalone",
+	"theme_color": "#23b7e5",
+	"background_color": "#23b7e5",
+	"icons": [{
+		"src": "assets/img/logo-single.svg",
+		"sizes": "592x592",
+		"type": "image/png"
+	}]
+}
