@@ -1,3 +1,3 @@
 /api/* https://api.koodous.com/:splat 200
-/*    /index.html   200
 /media/* https://api.koodous.com/media/:splat 200
+/*    /index.html   200
