@@ -1,4 +1,4 @@
-npm install -g yuglify
+npm install -g yuglify@0.1.4
 mkdir compiled
 yuglify assets/css/*.css -c compiled/styles
 yuglify app/*.js app/**/*.js app/**/**/*.js -c compiled/app
