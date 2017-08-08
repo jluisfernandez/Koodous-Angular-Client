@@ -62,7 +62,7 @@ angular.module('my_rulesets').controller('MyRuleSetDetailController', ["$scope",
 			$scope.rulesetChanged = false;
 		}, 10);
 	}).error(function(){
-		$location.path('/rulesets');
+		$location.path('/rulesets/' + $stateParams.id);
 	});
 	$scope.$watch('ruleset.rules', function(oldValue, newValue){
 		if(oldValue != newValue){

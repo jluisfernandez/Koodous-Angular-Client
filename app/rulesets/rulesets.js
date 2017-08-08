@@ -82,7 +82,7 @@ angular.module('rulesets').controller('RulesetsCtrl', ["$scope", "$stateParams",
 	};
 }]);
 
-angular.module('rulesets').controller('RulesetController', ["$scope", "$rootScope", "$stateParams", "api", function($scope, $rootScope, $stateParams, api){
+angular.module('rulesets').controller('RulesetController', ["$scope", "$rootScope", "$stateParams", "api", "$location", function($scope, $rootScope, $stateParams, api, $location){
 	$rootScope.section = "rulesets";
 	$scope.subSection = "main";
 	$scope.userVoted = false;
