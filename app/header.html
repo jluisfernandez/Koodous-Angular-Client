@@ -17,12 +17,12 @@
         <ul class="nav navbar-nav">
             <li>
                 <!-- Button used to collapse the left sidebar. Only visible on tablet and desktops-->
-                <a href ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs">
+                <a href ng-click="app.layout.isCollapsed = !app.layout.isCollapsed" class="hidden-xs" onclick="ga('send', 'event', 'Koodous', 'Header', 'Ampliar menu');">
                     <em class="fa fa-navicon"></em>
                 </a>
                 
                 <!-- Button to show/hide the sidebar on mobile. Visible on mobile only.-->
-                <a href ng-click="app.layout.asideToggled = !app.layout.asideToggled" no-persist="no-persist" class="visible-xs sidebar-toggle">
+                <a href ng-click="app.layout.asideToggled = !app.layout.asideToggled" no-persist="no-persist" class="visible-xs sidebar-toggle" onclick="ga('send', 'event', 'Koodous', 'Header', 'Ampliar menu');">
                     <em class="fa fa-navicon"></em>
                 </a>
             </li>
